@@ -5,15 +5,13 @@ namespace Code.Bootstrap
 {
     public class Bootstrapper : IInitializable
     {
+        private const string GameScene = "Game";
         private readonly GameStateMachine _gameStateMachine;
 
         public Bootstrapper(GameStateMachine gameStateMachine) => 
             _gameStateMachine = gameStateMachine;
 
-        public void Initialize()
-        {
-            _gameStateMachine.Enter<LoadLevelState>();
-            _gameStateMachine.Enter<GameLoopState>();
-        }
+        public void Initialize() => 
+            _gameStateMachine.Enter<LoadLevelState, string>(GameScene);
     }
 }

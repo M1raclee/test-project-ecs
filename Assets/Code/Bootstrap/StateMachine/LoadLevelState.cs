@@ -1,25 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Code.Bootstrap.StateMachine
 {
-    public class LoadLevelState : IState
+    public class LoadLevelState : IPayloadState<string>
     {
-        private readonly GameStateMachine _stateMachine;
+        private LazyInject<GameStateMachine> _stateMachine;
 
-        public LoadLevelState(GameStateMachine stateMachine) => 
+        public LoadLevelState(LazyInject<GameStateMachine> stateMachine) =>
             _stateMachine = stateMachine;
 
-        public void Enter()
+        public void Enter(string sceneName)
         {
             Debug.Log("Enter load level state");
+
             PrepareSystems();
-            
-            _stateMachine.Enter<GameLoopState>();
+            LoadGameScene(sceneName);
         }
 
-        private void PrepareSystems()
-        {
-            
-        }
+        private void PrepareSystems() { }
+
+        private void LoadGameScene(string sceneName) =>
+            SceneManager.LoadSceneAsync(sceneName).completed += GameSceneLoaded;
+
+        private void GameSceneLoaded(AsyncOperation operation) =>
+            _stateMachine.Value.Enter<GameLoopState>();
     }
 }

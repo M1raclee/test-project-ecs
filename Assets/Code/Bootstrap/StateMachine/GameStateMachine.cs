@@ -16,14 +16,23 @@ namespace Code.Bootstrap.StateMachine
                 [typeof(GameLoopState)] = gameLoopState,
             };
         }
-        
+
         public void Enter<T>() where T : IState
         {
             ChangeCurrentState<T>();
-            
-            _activeState.Enter();
+
+            if (_activeState is IEnterableState enterableState)
+                enterableState.Enter();
         }
         
+        public void Enter<T, TPayload>(TPayload payload) where T : IState
+        {
+            ChangeCurrentState<T>();
+
+            if (_activeState is IPayloadState<TPayload> payloadState)
+                payloadState.Enter(payload);
+        }
+
         private void ChangeCurrentState<T>() where T : IState
         {
             if (_activeState is IExitableState exitableState)

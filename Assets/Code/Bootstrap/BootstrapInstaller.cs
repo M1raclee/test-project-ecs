@@ -10,9 +10,13 @@ namespace Code.Bootstrap
             Container.BindInterfacesAndSelfTo<Bootstrapper>().AsSingle().NonLazy();
             
             BindGameStateMachineStates();
+            Container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
         }
 
-        private void BindGameStateMachineStates() =>
+        private void BindGameStateMachineStates()
+        {
             Container.BindInterfacesAndSelfTo<LoadLevelState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameLoopState>().AsSingle();
+        }
     }
 }

@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "Shared",
-        "Leopotam.EcsLite"
+        "Leopotam.EcsLite",
+        "Zenject",
+        "Services"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

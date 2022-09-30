@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Code.ECS.Client.Systems
 {
-    public class PlayerMovementSystem : IEcsRunSystem
+    public class PlayerInputSystem : IEcsRunSystem
     {
         private readonly IInputService _inputService;
 
-        public PlayerMovementSystem(IInputService inputService) => 
+        public PlayerInputSystem(IInputService inputService) => 
             _inputService = inputService;
 
         public void Run(IEcsSystems systems)

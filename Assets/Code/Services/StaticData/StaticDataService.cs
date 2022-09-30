@@ -1,4 +1,5 @@
 using Code.Data;
+using Code.ECS.Shared.Data;
 using UnityEngine;
 using Zenject;
 
@@ -17,7 +18,7 @@ namespace Code.Services.StaticData
             // TODO: add asset service
             _playerData = Resources.Load<PlayerData>(DataPlayerDataPath);
 
-        public PlayerData ForPlayer() =>
+        public IPlayerData ForPlayer() =>
             _playerData;
     }
 }

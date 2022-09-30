@@ -10,7 +10,7 @@ namespace Code.Services
         public override void InstallBindings()
         {
             Container.Bind<ISceneContentService>().To<SceneContentService>().AsSingle();
-            Container.Bind<IInputService>().To<StandaloneInputService>().AsSingle();
+            Container.Bind(typeof(IInputService), typeof(IInitializable), typeof(ITickable)).To<PointAndClickInputService>().AsSingle();
             Container.Bind(typeof(IStaticData), typeof(IInitializable)).To<StaticDataService>().AsSingle();
         }
     }

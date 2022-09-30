@@ -681,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1444884613}
+  Camera: {fileID: 963194227}
 --- !u!1 &895403054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1468,7 @@ GameObject:
   - component: {fileID: 1718820143}
   - component: {fileID: 1718820142}
   - component: {fileID: 1718820141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

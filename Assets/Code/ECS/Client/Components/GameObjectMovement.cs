@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.ECS.Client.Components
 {
-    public struct TransformMovement
+    public struct GameObjectMovement
     {
         public Transform Target;
     }

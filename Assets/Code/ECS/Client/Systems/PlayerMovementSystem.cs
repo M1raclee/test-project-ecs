@@ -22,6 +22,7 @@ namespace Code.ECS.Client.Systems
             foreach (var entity in playerInputFilter)
             {
                 ref var playerInput = ref movementInput.Get(entity);
+                // OFC we need to send player input to server for validation, but we have not server now
                 playerInput.Axis = _inputService.Axis.ToSystemVector3();
             }
         }

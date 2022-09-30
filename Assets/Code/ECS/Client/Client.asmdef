@@ -1,0 +1,19 @@
+{
+    "name": "Client",
+    "rootNamespace": "",
+    "references": [
+        "Shared",
+        "Leopotam.EcsLite",
+        "Zenject",
+        "Markers"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

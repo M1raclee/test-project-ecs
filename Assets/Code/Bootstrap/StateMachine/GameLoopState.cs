@@ -17,8 +17,6 @@ namespace Code.Bootstrap.StateMachine
 
         public void Enter() => 
             Debug.Log("Enter game loop state");
-        
-        
 
         public void Update() => 
             _systems.Run();

@@ -1,0 +1,17 @@
+{
+    "name": "Services",
+    "rootNamespace": "",
+    "references": [
+        "Zenject",
+        "Markers"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -282,6 +282,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6409463419271184339, guid: b1df019658ee2479da307fcaee9209fe, type: 3}
   m_PrefabInstance: {fileID: 294516435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &294516437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3908753464612214804, guid: b1df019658ee2479da307fcaee9209fe, type: 3}
+  m_PrefabInstance: {fileID: 294516435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91d65d0a36704b5e844c08f8f056ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368367386
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +383,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7529356843471711130, guid: e42c730719459433397b7bdddacc2ec3, type: 3}
+      propertyPath: Guid
+      value: 7db39af5-6e33-4705-8f8e-aff7e19e07f5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42c730719459433397b7bdddacc2ec3, type: 3}
 --- !u!4 &515934939 stripped
@@ -379,6 +394,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4367130242604748959, guid: e42c730719459433397b7bdddacc2ec3, type: 3}
   m_PrefabInstance: {fileID: 515934938}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &515934940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7529356843471711130, guid: e42c730719459433397b7bdddacc2ec3, type: 3}
+  m_PrefabInstance: {fileID: 515934938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d860d2162587f4e65a3e21c3f7810e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &622665999
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 6749661072372247548, guid: bbb06ab6fb5d64ecaa892ad59349379a, type: 3}
+      propertyPath: Guid
+      value: a7fd2022-66ef-4f04-ab41-d49113f7cd44
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbb06ab6fb5d64ecaa892ad59349379a, type: 3}
 --- !u!4 &681331404 stripped
@@ -542,6 +572,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 670212821159268601, guid: bbb06ab6fb5d64ecaa892ad59349379a, type: 3}
   m_PrefabInstance: {fileID: 681331403}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &681331405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6749661072372247548, guid: bbb06ab6fb5d64ecaa892ad59349379a, type: 3}
+  m_PrefabInstance: {fileID: 681331403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d860d2162587f4e65a3e21c3f7810e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +723,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1444884613}
   Camera: {fileID: 963194227}
+  Buttons:
+  - {fileID: 1355873576}
+  - {fileID: 294516437}
+  - {fileID: 1959882858}
+  Doors:
+  - {fileID: 515934940}
+  - {fileID: 681331405}
+  - {fileID: 1637068266}
 --- !u!1 &895403054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1262,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2060708552876489827, guid: 58e44604ccc9749f5b498731fd9b9518, type: 3}
   m_PrefabInstance: {fileID: 1355873574}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1355873576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8238570356185684900, guid: 58e44604ccc9749f5b498731fd9b9518, type: 3}
+  m_PrefabInstance: {fileID: 1355873574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91d65d0a36704b5e844c08f8f056ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1444884613 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8626259870655121382, guid: d3c31ef7add4646d695431e8ddea488f, type: 3}
@@ -1362,6 +1422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1564833150}
     m_Modifications:
+    - target: {fileID: 3840291111059650688, guid: 4044438137617494095f44f30871c77f, type: 3}
+      propertyPath: Guid
+      value: 26063732-e52a-4d85-86c0-39c988e9c9ec
+      objectReference: {fileID: 0}
     - target: {fileID: 7038558398490018690, guid: 4044438137617494095f44f30871c77f, type: 3}
       propertyPath: m_Name
       value: GreenDoor
@@ -1417,6 +1481,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7038558398490018693, guid: 4044438137617494095f44f30871c77f, type: 3}
   m_PrefabInstance: {fileID: 1637068264}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1637068266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3840291111059650688, guid: 4044438137617494095f44f30871c77f, type: 3}
+  m_PrefabInstance: {fileID: 1637068264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d860d2162587f4e65a3e21c3f7810e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1713499702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1821,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2601005531863964017, guid: 4599f2c7ab8ce41c7816c78b12d4c114, type: 3}
   m_PrefabInstance: {fileID: 1959882856}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1959882858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5392202197312143030, guid: 4599f2c7ab8ce41c7816c78b12d4c114, type: 3}
+  m_PrefabInstance: {fileID: 1959882856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91d65d0a36704b5e844c08f8f056ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097275243
 GameObject:
   m_ObjectHideFlags: 0

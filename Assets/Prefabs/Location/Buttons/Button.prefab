@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1102194054701985094}
   - component: {fileID: 1102194054701985093}
   - component: {fileID: 1102194054701985092}
-  - component: {fileID: 495689542097215596}
+  - component: {fileID: 4513271150178568410}
+  - component: {fileID: 7027748691880577665}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -84,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &495689542097215596
-CapsuleCollider:
+--- !u!64 &4513271150178568410
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +95,19 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7027748691880577665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102194054701985089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91d65d0a36704b5e844c08f8f056ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

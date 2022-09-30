@@ -6,5 +6,7 @@ namespace Code.Services.SceneContent
     {
         public PlayerObject Player;
         public Camera Camera;
+        public ButtonObject[] Buttons;
+        public DoorObject[] Doors;
     }
 }

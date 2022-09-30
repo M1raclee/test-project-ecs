@@ -1,5 +1,6 @@
 using Code.Services.InputService;
 using Code.Services.SceneContent;
+using Code.Services.StaticData;
 using Zenject;
 
 namespace Code.Services
@@ -10,6 +11,7 @@ namespace Code.Services
         {
             Container.Bind<ISceneContentService>().To<SceneContentService>().AsSingle();
             Container.Bind<IInputService>().To<StandaloneInputService>().AsSingle();
+            Container.Bind(typeof(IStaticData), typeof(IInitializable)).To<StaticDataService>().AsSingle();
         }
     }
 }

@@ -1,11 +1,11 @@
 using Code.ECS.Client.Components;
 using Code.ECS.Server.Tags;
+using Code.ECS.Shared.Components;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Code.ECS.Client.Systems
 {
-    public class PlayerInitializeSystem : IEcsInitSystem, IEcsRunSystem
+    public class PlayerInitializeSystem : IEcsInitSystem
     {
         private PlayerObject _playerObject;
 
@@ -18,20 +18,10 @@ namespace Code.ECS.Client.Systems
             var player = world.NewEntity();
 
             world.GetPool<PlayerTag>().Add(player);
-            ref var movement = ref world.GetPool<TransformMovement>().Add(player);
+            world.GetPool<MovementInput>().Add(player);
+            ref var transformMovement = ref world.GetPool<TransformMovement>().Add(player);
 
-            movement.Target = _playerObject.transform;
-        }
-
-        public void Run(IEcsSystems systems)
-        {
-            var world = systems.GetWorld();
-            var filter = world.Filter<PlayerTag>().Inc<TransformMovement>().End();
-
-            foreach (var entity in filter)
-            {
-                Debug.Log($"Found player entity: {entity}");
-            }
+            transformMovement.Target = _playerObject.transform;
         }
     }
 }

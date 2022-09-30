@@ -5,7 +5,9 @@
         "Shared",
         "Leopotam.EcsLite",
         "Zenject",
-        "Markers"
+        "Markers",
+        "Services",
+        "Utils"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

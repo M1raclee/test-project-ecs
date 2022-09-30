@@ -9,16 +9,19 @@ namespace Code.Bootstrap.StateMachine
     {
         private readonly EcsSystems _systems;
         private readonly PlayerInitializeSystem _playerInitializeSystem;
+        private readonly PlayerMovementSystem _playerMovementSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
         public SystemsRegistrationState(LazyInject<GameStateMachine> stateMachine, EcsSystems systems,
-            PlayerInitializeSystem playerInitializeSystem, ISceneContentService sceneContentService)
+            ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
+            PlayerMovementSystem playerMovementSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
-            _playerInitializeSystem = playerInitializeSystem;
             _sceneContentService = sceneContentService;
+            _playerInitializeSystem = playerInitializeSystem;
+            _playerMovementSystem = playerMovementSystem;
         }
 
         public void Enter()
@@ -33,7 +36,10 @@ namespace Code.Bootstrap.StateMachine
         private void ApplySceneContent() =>
             _playerInitializeSystem.SetupPlayerObject(_sceneContentService.GameSceneContent.Player);
 
-        private void PrepareSystems() =>
+        private void PrepareSystems()
+        {
+            _systems.Add(_playerMovementSystem);
             _systems.Add(_playerInitializeSystem);
+        }
     }
 }

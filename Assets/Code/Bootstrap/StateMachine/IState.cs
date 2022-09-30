@@ -16,4 +16,9 @@ namespace Code.Bootstrap.StateMachine
     {
         void Exit();
     }
+
+    public interface IUpdatableState : IState
+    {
+        void Update();
+    }
 }

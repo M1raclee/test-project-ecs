@@ -7,9 +7,9 @@ namespace Code.ECS.Client.Systems
 {
     public class PlayerInitializeSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private readonly PlayerObject _playerObject;
-        
-        public PlayerInitializeSystem(PlayerObject playerObject) =>
+        private PlayerObject _playerObject;
+
+        public void SetupPlayerObject(PlayerObject playerObject) =>
             _playerObject = playerObject;
 
         public void Init(IEcsSystems systems)

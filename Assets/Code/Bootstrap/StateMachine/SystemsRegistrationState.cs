@@ -12,14 +12,15 @@ namespace Code.Bootstrap.StateMachine
         private readonly PlayerInitializeSystem _playerInitializeSystem;
         private readonly PlayerMovementSystem _playerMovementSystem;
         private readonly GameObjectMovementSystem _gameObjectMovementSystem;
-        private readonly MovementSystem _movementSystem;
+        private readonly VelocityMovementSystem _velocityMovementSystem;
+        private readonly CharacterMovementSystem _characterMovementSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
         public SystemsRegistrationState(LazyInject<GameStateMachine> stateMachine, EcsSystems systems,
             ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
             PlayerMovementSystem playerMovementSystem, GameObjectMovementSystem gameObjectMovementSystem,
-            MovementSystem movementSystem)
+            VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -27,7 +28,8 @@ namespace Code.Bootstrap.StateMachine
             _playerInitializeSystem = playerInitializeSystem;
             _playerMovementSystem = playerMovementSystem;
             _gameObjectMovementSystem = gameObjectMovementSystem;
-            _movementSystem = movementSystem;
+            _velocityMovementSystem = velocityMovementSystem;
+            _characterMovementSystem = characterMovementSystem;
         }
 
         public void Enter()
@@ -47,7 +49,8 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_playerMovementSystem);
             _systems.Add(_gameObjectMovementSystem);
             _systems.Add(_playerInitializeSystem);
-            _systems.Add(_movementSystem);
+            _systems.Add(_characterMovementSystem);
+            _systems.Add(_velocityMovementSystem);
         }
     }
 }

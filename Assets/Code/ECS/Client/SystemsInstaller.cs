@@ -11,7 +11,8 @@ namespace Code.ECS.Client
             Container.Bind<PlayerInitializeSystem>().AsSingle();
             Container.Bind<PlayerMovementSystem>().AsSingle();
             Container.Bind<GameObjectMovementSystem>().AsSingle();
-            Container.Bind<MovementSystem>().AsSingle();
+            Container.Bind<VelocityMovementSystem>().AsSingle();
+            Container.Bind<CharacterMovementSystem>().AsSingle();
         }
     }
 }

@@ -20,14 +20,13 @@ namespace Code.ECS.Client.Systems
 
             world.GetPool<PlayerTag>().Add(player);
             world.GetPool<MovementInput>().Add(player);
-            ref var multiplier = ref world.GetPool<MovementMultiplier>().Add(player);
-            ref var location = ref world.GetPool<Location>().Add(player);
-            ref var transformMovement = ref world.GetPool<GameObjectMovement>().Add(player);
+            world.GetPool<MovementVelocity>().Add(player);
+            ref var movementParams = ref world.GetPool<MovementParams>().Add(player);
+            ref var characterMovement = ref world.GetPool<CharacterMovement>().Add(player);
 
-            transformMovement.Target = _playerObject.transform;
-            location.Position = _playerObject.transform.position.ToSystemVector3();
-            location.Rotation = _playerObject.transform.eulerAngles.ToSystemVector3();
-            multiplier.Multiplier = 0.015f;
+            characterMovement.Target = _playerObject.Character;
+            movementParams.Speed = 8f;
+            movementParams.Gravity = -20f;
         }
     }
 }

@@ -3,6 +3,7 @@ using Code.ECS.Shared.Components;
 using Code.Services.InputService;
 using Code.Utils;
 using Leopotam.EcsLite;
+using UnityEngine;
 
 namespace Code.ECS.Client.Systems
 {
@@ -23,7 +24,7 @@ namespace Code.ECS.Client.Systems
             {
                 ref var playerInput = ref movementInput.Get(entity);
                 // OFC we need to send player input to server for validation, but we have not server now
-                playerInput.Axis = _inputService.Axis.ToSystemVector3();
+                playerInput.Axis = _inputService.Axis.ToSystemVector3() * Time.deltaTime;
             }
         }
     }

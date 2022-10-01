@@ -13,10 +13,5 @@ namespace Code.Markers
 
         private void OnCollisionExit(Collision other) =>
             StayedCollisions.Remove(other);
-
-        private void Update()
-        {
-            Debug.Log($"Stayed collisions {StayedCollisions.Count}");
-        }
     }
 }

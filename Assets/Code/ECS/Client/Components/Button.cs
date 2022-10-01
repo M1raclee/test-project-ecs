@@ -1,6 +1,6 @@
 namespace Code.ECS.Client.Components
 {
-    public struct GameplayButton
+    public struct Button
     {
         public ButtonObject Target;
     }

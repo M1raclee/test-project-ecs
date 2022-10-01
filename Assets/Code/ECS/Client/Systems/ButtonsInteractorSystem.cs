@@ -13,9 +13,9 @@ namespace Code.ECS.Client.Systems
         {
             var world = systems.GetWorld();
             var detectorsFilter = world.Filter<CollisionDetector>().Inc<ButtonsInteractor>().End();
-            var buttonsFilter = world.Filter<GameplayButtonState>().End();
+            var buttonsFilter = world.Filter<ButtonState>().End();
             var detectors = world.GetPool<CollisionDetector>();
-            var buttonStates = world.GetPool<GameplayButtonState>();
+            var buttonStates = world.GetPool<ButtonState>();
 
             foreach (var entity in buttonsFilter)
             {

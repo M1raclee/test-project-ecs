@@ -12,7 +12,7 @@ namespace Code.ECS.Client
             Container.Bind<CharacterMovementSystem>().AsSingle();
             Container.Bind<PlayerCharacterBindSystem>().AsSingle();
             
-            Container.Bind<GameplayButtonsBindSystem>().AsSingle();
+            Container.Bind<ButtonsBindSystem>().AsSingle();
             Container.Bind<ButtonsInteractorSystem>().AsSingle();
         }
     }

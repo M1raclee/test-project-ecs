@@ -1,15 +1,16 @@
 using Code.ECS.Server.Tags;
 using Code.ECS.Shared.Components;
+using Code.ECS.Shared.Tags;
 using Code.Services.StaticData;
 using Leopotam.EcsLite;
 
 namespace Code.ECS.Server.Systems
 {
-    public class GameplayButtonInitializeSystem : IEcsInitSystem
+    public class ButtonInitializeSystem : IEcsInitSystem
     {
         private readonly IStaticData _staticData;
 
-        public GameplayButtonInitializeSystem(IStaticData staticData) =>
+        public ButtonInitializeSystem(IStaticData staticData) =>
             _staticData = staticData;
 
         public void Init(IEcsSystems systems)
@@ -19,8 +20,8 @@ namespace Code.ECS.Server.Systems
             for (var i = 0; i < _staticData.ForButtons().TotalCount; i++)
             {
                 var button = world.NewEntity();
-                world.GetPool<GameplayButtonTag>().Add(button);
-                world.GetPool<GameplayButtonState>().Add(button);
+                world.GetPool<ButtonTag>().Add(button);
+                world.GetPool<ButtonState>().Add(button);
             }
         }
     }

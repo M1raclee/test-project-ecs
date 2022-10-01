@@ -1,6 +1,6 @@
 namespace Code.ECS.Shared.Components
 {
-    public struct GameplayButtonState
+    public struct ButtonState
     {
         public bool IsPressing;
     }

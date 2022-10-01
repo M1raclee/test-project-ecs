@@ -15,8 +15,8 @@ namespace Code.Bootstrap.StateMachine
         private readonly VelocityMovementSystem _velocityMovementSystem;
         private readonly CharacterMovementSystem _characterMovementSystem;
         private readonly PlayerCharacterBindSystem _playerCharacterBindSystem;
-        private readonly GameplayButtonInitializeSystem _gameplayButtonInitializeSystem;
-        private readonly GameplayButtonsBindSystem _gameplayButtonsBindSystem;
+        private readonly ButtonInitializeSystem _buttonInitializeSystem;
+        private readonly ButtonsBindSystem _buttonsBindSystem;
         private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
@@ -25,8 +25,8 @@ namespace Code.Bootstrap.StateMachine
             ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
             PlayerInputSystem playerInputSystem, GameObjectMovementSystem gameObjectMovementSystem,
             VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem,
-            PlayerCharacterBindSystem playerCharacterBindSystem, GameplayButtonInitializeSystem gameplayButtonInitializeSystem,
-            GameplayButtonsBindSystem gameplayButtonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem)
+            PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
+            ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -37,8 +37,8 @@ namespace Code.Bootstrap.StateMachine
             _velocityMovementSystem = velocityMovementSystem;
             _characterMovementSystem = characterMovementSystem;
             _playerCharacterBindSystem = playerCharacterBindSystem;
-            _gameplayButtonInitializeSystem = gameplayButtonInitializeSystem;
-            _gameplayButtonsBindSystem = gameplayButtonsBindSystem;
+            _buttonInitializeSystem = buttonInitializeSystem;
+            _buttonsBindSystem = buttonsBindSystem;
             _buttonsInteractorSystem = buttonsInteractorSystem;
         }
 
@@ -54,7 +54,7 @@ namespace Code.Bootstrap.StateMachine
         private void ApplySceneContent()
         {
             _playerCharacterBindSystem.SetupPlayerObject(_sceneContentService.GameSceneContent.Player);
-            _gameplayButtonsBindSystem.SetupButtonsObject(_sceneContentService.GameSceneContent.Buttons);
+            _buttonsBindSystem.SetupButtonsObject(_sceneContentService.GameSceneContent.Buttons);
         }
 
         private void PrepareSystems()
@@ -75,8 +75,8 @@ namespace Code.Bootstrap.StateMachine
 
         private void PrepareEnvironmentSystems()
         {
-            _systems.Add(_gameplayButtonInitializeSystem);
-            _systems.Add(_gameplayButtonsBindSystem);
+            _systems.Add(_buttonInitializeSystem);
+            _systems.Add(_buttonsBindSystem);
             _systems.Add(_buttonsInteractorSystem);
         }
     }

@@ -16,12 +16,13 @@ namespace Code.Editor
 
         public override void OnInspectorGUI()
         {
+            var button = (ButtonObject) target;
             _door = (DoorObject) EditorGUILayout.ObjectField(_door, typeof(DoorObject), true);
 
-            if (_door != null)
+            if (_door != null && button.TargetGuid != _door.Guid)
             {
-                var button = (ButtonObject) target;
                 button.TargetGuid = _door.Guid;
+                EditorUtility.SetDirty(button);
             }
         }
     }

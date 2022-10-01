@@ -18,6 +18,7 @@ namespace Code.Bootstrap.StateMachine
         private readonly ButtonInitializeSystem _buttonInitializeSystem;
         private readonly ButtonsBindSystem _buttonsBindSystem;
         private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
+        private readonly DoorsInitializeSystem _doorsInitializeSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
@@ -26,7 +27,8 @@ namespace Code.Bootstrap.StateMachine
             PlayerInputSystem playerInputSystem, GameObjectMovementSystem gameObjectMovementSystem,
             VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem,
             PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
-            ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem)
+            ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem,
+            DoorsInitializeSystem doorsInitializeSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -40,6 +42,7 @@ namespace Code.Bootstrap.StateMachine
             _buttonInitializeSystem = buttonInitializeSystem;
             _buttonsBindSystem = buttonsBindSystem;
             _buttonsInteractorSystem = buttonsInteractorSystem;
+            _doorsInitializeSystem = doorsInitializeSystem;
         }
 
         public void Enter()
@@ -78,6 +81,7 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_buttonInitializeSystem);
             _systems.Add(_buttonsBindSystem);
             _systems.Add(_buttonsInteractorSystem);
+            _systems.Add(_doorsInitializeSystem);
         }
     }
 }

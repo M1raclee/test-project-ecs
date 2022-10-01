@@ -31,5 +31,9 @@ namespace Code.Services.StaticData
         // just pass it from scene content
         public IButtonsData ForButtons() => 
             new ButtonsData {TotalCount = _sceneContentService.GameSceneContent.Buttons.Length};
+
+        // also for doors
+        public IDoorsData ForDoors() =>
+            new DoorsData {TotalCount = _sceneContentService.GameSceneContent.Doors.Length};
     }
 }

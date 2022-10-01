@@ -8,8 +8,10 @@ namespace Code.ECS.Server
         public override void InstallBindings()
         {
             Container.Bind<PlayerInitializeSystem>().AsSingle();
-            Container.Bind<ButtonInitializeSystem>().AsSingle();
             Container.Bind<VelocityMovementSystem>().AsSingle();
+            
+            Container.Bind<ButtonInitializeSystem>().AsSingle();
+            Container.Bind<DoorsInitializeSystem>().AsSingle();
         }
     }
 }

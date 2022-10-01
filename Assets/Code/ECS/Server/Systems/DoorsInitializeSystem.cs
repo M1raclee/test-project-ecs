@@ -5,22 +5,22 @@ using Leopotam.EcsLite;
 
 namespace Code.ECS.Server.Systems
 {
-    public class ButtonInitializeSystem : IEcsInitSystem
+    public class DoorsInitializeSystem : IEcsInitSystem
     {
         private readonly IStaticData _staticData;
 
-        public ButtonInitializeSystem(IStaticData staticData) =>
+        public DoorsInitializeSystem(IStaticData staticData) =>
             _staticData = staticData;
 
         public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
 
-            for (var i = 0; i < _staticData.ForButtons().TotalCount; i++)
+            for (var i = 0; i < _staticData.ForDoors().TotalCount; i++)
             {
                 var button = world.NewEntity();
-                world.GetPool<ButtonTag>().Add(button);
-                world.GetPool<ButtonState>().Add(button);
+                world.GetPool<DoorTag>().Add(button);
+                world.GetPool<DoorState>().Add(button);
             }
         }
     }

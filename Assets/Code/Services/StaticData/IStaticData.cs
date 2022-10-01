@@ -6,5 +6,6 @@ namespace Code.Services.StaticData
     {
         IPlayerData ForPlayer();
         IButtonsData ForButtons();
+        IDoorsData ForDoors();
     }
 }

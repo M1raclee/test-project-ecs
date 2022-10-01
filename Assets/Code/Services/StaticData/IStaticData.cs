@@ -5,5 +5,6 @@ namespace Code.Services.StaticData
     public interface IStaticData
     {
         IPlayerData ForPlayer();
+        IButtonsData ForButtons();
     }
 }

@@ -17,6 +17,7 @@ namespace Code.ECS.Client.Systems
             var world = systems.GetWorld();
             var playerFilter = world.Filter<PlayerTag>().End();
             var characterMovement = world.GetPool<CharacterMovement>();
+            var collisionDetector = world.GetPool<CollisionDetector>();
 
             foreach (var entity in playerFilter)
             {
@@ -24,7 +25,10 @@ namespace Code.ECS.Client.Systems
                     continue;
                 
                 ref var character = ref characterMovement.Add(entity);
+                ref var colDetector = ref collisionDetector.Add(entity);
+                
                 character.Target = _playerObject.Character;
+                colDetector.Detector = _playerObject.CollisionDetector;
             }
         }
     }

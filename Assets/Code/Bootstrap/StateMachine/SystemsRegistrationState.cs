@@ -15,6 +15,9 @@ namespace Code.Bootstrap.StateMachine
         private readonly VelocityMovementSystem _velocityMovementSystem;
         private readonly CharacterMovementSystem _characterMovementSystem;
         private readonly PlayerCharacterBindSystem _playerCharacterBindSystem;
+        private readonly GameplayButtonInitializeSystem _gameplayButtonInitializeSystem;
+        private readonly GameplayButtonsBindSystem _gameplayButtonsBindSystem;
+        private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
@@ -22,7 +25,8 @@ namespace Code.Bootstrap.StateMachine
             ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
             PlayerInputSystem playerInputSystem, GameObjectMovementSystem gameObjectMovementSystem,
             VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem,
-            PlayerCharacterBindSystem playerCharacterBindSystem)
+            PlayerCharacterBindSystem playerCharacterBindSystem, GameplayButtonInitializeSystem gameplayButtonInitializeSystem,
+            GameplayButtonsBindSystem gameplayButtonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -33,6 +37,9 @@ namespace Code.Bootstrap.StateMachine
             _velocityMovementSystem = velocityMovementSystem;
             _characterMovementSystem = characterMovementSystem;
             _playerCharacterBindSystem = playerCharacterBindSystem;
+            _gameplayButtonInitializeSystem = gameplayButtonInitializeSystem;
+            _gameplayButtonsBindSystem = gameplayButtonsBindSystem;
+            _buttonsInteractorSystem = buttonsInteractorSystem;
         }
 
         public void Enter()
@@ -44,10 +51,19 @@ namespace Code.Bootstrap.StateMachine
             _stateMachine.Value.Enter<GameLoopState>();
         }
 
-        private void ApplySceneContent() =>
+        private void ApplySceneContent()
+        {
             _playerCharacterBindSystem.SetupPlayerObject(_sceneContentService.GameSceneContent.Player);
+            _gameplayButtonsBindSystem.SetupButtonsObject(_sceneContentService.GameSceneContent.Buttons);
+        }
 
         private void PrepareSystems()
+        {
+            PreparePlayerSystems();
+            PrepareEnvironmentSystems();
+        }
+
+        private void PreparePlayerSystems()
         {
             _systems.Add(_playerInputSystem);
             _systems.Add(_gameObjectMovementSystem);
@@ -55,6 +71,13 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_characterMovementSystem);
             _systems.Add(_playerCharacterBindSystem);
             _systems.Add(_velocityMovementSystem);
+        }
+
+        private void PrepareEnvironmentSystems()
+        {
+            _systems.Add(_gameplayButtonInitializeSystem);
+            _systems.Add(_gameplayButtonsBindSystem);
+            _systems.Add(_buttonsInteractorSystem);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Code.ECS.Client
             
             Container.Bind<ButtonsBindSystem>().AsSingle();
             Container.Bind<ButtonsInteractorSystem>().AsSingle();
+            Container.Bind<DoorsBindSystem>().AsSingle();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Code.Bootstrap.StateMachine
         private readonly ButtonsBindSystem _buttonsBindSystem;
         private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
         private readonly DoorsInitializeSystem _doorsInitializeSystem;
+        private readonly DoorsBindSystem _doorsBindSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
@@ -28,7 +29,7 @@ namespace Code.Bootstrap.StateMachine
             VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem,
             PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
             ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem,
-            DoorsInitializeSystem doorsInitializeSystem)
+            DoorsInitializeSystem doorsInitializeSystem, DoorsBindSystem doorsBindSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -43,6 +44,7 @@ namespace Code.Bootstrap.StateMachine
             _buttonsBindSystem = buttonsBindSystem;
             _buttonsInteractorSystem = buttonsInteractorSystem;
             _doorsInitializeSystem = doorsInitializeSystem;
+            _doorsBindSystem = doorsBindSystem;
         }
 
         public void Enter()
@@ -58,6 +60,7 @@ namespace Code.Bootstrap.StateMachine
         {
             _playerCharacterBindSystem.SetupPlayerObject(_sceneContentService.GameSceneContent.Player);
             _buttonsBindSystem.SetupButtonsObject(_sceneContentService.GameSceneContent.Buttons);
+            _doorsBindSystem.SetupDoorsObject(_sceneContentService.GameSceneContent.Doors);
         }
 
         private void PrepareSystems()
@@ -82,6 +85,7 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_buttonsBindSystem);
             _systems.Add(_buttonsInteractorSystem);
             _systems.Add(_doorsInitializeSystem);
+            _systems.Add(_doorsBindSystem);
         }
     }
 }

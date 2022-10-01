@@ -1,7 +1,6 @@
 using Code.ECS.Client.Components;
 using Code.ECS.Shared.Components;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Code.ECS.Client.Systems
 {

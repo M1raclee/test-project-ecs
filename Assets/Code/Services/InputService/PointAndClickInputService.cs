@@ -67,7 +67,7 @@ namespace Code.Services.InputService
             if (!_isDestinationSet)
                 return Vector3.zero;
 
-            var distance = Vector3.Distance(_destination, _target.position);
+            var distance = Distance(_destination, _target.position);
 
             if (distance < _staticData.ForPlayer().MovementThreshold)
                 return Vector3.zero;
@@ -75,6 +75,13 @@ namespace Code.Services.InputService
             var direction = (_destination - _target.position).normalized;
 
             return direction;
+        }
+
+        private float Distance(Vector3 destination, Vector3 current)
+        {
+            var num1 = destination.x - current.x;
+            var num2 = destination.z - current.z;
+            return (float) Math.Sqrt(num1 * num1 + num2 * num2);
         }
     }
 }

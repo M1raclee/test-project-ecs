@@ -1,3 +1,4 @@
+using System.Numerics;
 using Code.ECS.Shared.Components;
 using Leopotam.EcsLite;
 
@@ -9,7 +10,7 @@ namespace Code.ECS.Server.Systems.Movement
         {
             var world = systems.GetWorld();
             var movableFilter = world.Filter<MovementDirection>().Inc<MovementInput>().Inc<MovementParams>().End();
-            
+
             var movementDirection = world.GetPool<MovementDirection>();
             var movementInput = world.GetPool<MovementInput>();
             var movementParams = world.GetPool<MovementParams>();
@@ -22,8 +23,11 @@ namespace Code.ECS.Server.Systems.Movement
 
                 var offset = entityInput.Axis * currentParams.Speed * currentParams.Equalizer;
                 offset.Y = currentParams.Gravity;
-                
+
                 direction.Offset = offset;
+                direction.Direction = entityInput.Axis == Vector3.Zero
+                    ? Vector3.Zero
+                    : Vector3.Normalize(entityInput.Axis);
             }
         }
     }

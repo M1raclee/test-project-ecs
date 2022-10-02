@@ -30,6 +30,7 @@ namespace Code.ECS.Client.Systems.Binding
                 ref var colDetector = ref collisionDetector.Add(entity);
 
                 character.Target = _playerObject.Character;
+                character.Body = _playerObject.transform;
                 colDetector.Detector = _playerObject.CollisionDetector;
                 animation.Animator = _playerObject.Animator;
                 animation.IsMovingParam = "IsWalking";

@@ -12,7 +12,7 @@ namespace Code.Bootstrap.StateMachine
         private readonly PlayerInitializeSystem _playerInitializeSystem;
         private readonly PlayerInputSystem _playerInputSystem;
         private readonly GameObjectMovementSystem _gameObjectMovementSystem;
-        private readonly VelocityMovementSystem _velocityMovementSystem;
+        private readonly MovementSystem _movementSystem;
         private readonly CharacterMovementSystem _characterMovementSystem;
         private readonly PlayerCharacterBindSystem _playerCharacterBindSystem;
         private readonly ButtonInitializeSystem _buttonInitializeSystem;
@@ -20,16 +20,18 @@ namespace Code.Bootstrap.StateMachine
         private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
         private readonly DoorsInitializeSystem _doorsInitializeSystem;
         private readonly DoorsBindSystem _doorsBindSystem;
+        private readonly DoorMovementSystem _doorMovementSystem;
         private readonly ISceneContentService _sceneContentService;
         private readonly LazyInject<GameStateMachine> _stateMachine;
 
         public SystemsRegistrationState(LazyInject<GameStateMachine> stateMachine, EcsSystems systems,
             ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
             PlayerInputSystem playerInputSystem, GameObjectMovementSystem gameObjectMovementSystem,
-            VelocityMovementSystem velocityMovementSystem, CharacterMovementSystem characterMovementSystem,
+            MovementSystem movementSystem, CharacterMovementSystem characterMovementSystem,
             PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
             ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem,
-            DoorsInitializeSystem doorsInitializeSystem, DoorsBindSystem doorsBindSystem)
+            DoorsInitializeSystem doorsInitializeSystem, DoorsBindSystem doorsBindSystem,
+            DoorMovementSystem doorMovementSystem)
         {
             _stateMachine = stateMachine;
             _systems = systems;
@@ -37,7 +39,7 @@ namespace Code.Bootstrap.StateMachine
             _playerInitializeSystem = playerInitializeSystem;
             _playerInputSystem = playerInputSystem;
             _gameObjectMovementSystem = gameObjectMovementSystem;
-            _velocityMovementSystem = velocityMovementSystem;
+            _movementSystem = movementSystem;
             _characterMovementSystem = characterMovementSystem;
             _playerCharacterBindSystem = playerCharacterBindSystem;
             _buttonInitializeSystem = buttonInitializeSystem;
@@ -45,6 +47,7 @@ namespace Code.Bootstrap.StateMachine
             _buttonsInteractorSystem = buttonsInteractorSystem;
             _doorsInitializeSystem = doorsInitializeSystem;
             _doorsBindSystem = doorsBindSystem;
+            _doorMovementSystem = doorMovementSystem;
         }
 
         public void Enter()
@@ -76,16 +79,27 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_playerInitializeSystem);
             _systems.Add(_characterMovementSystem);
             _systems.Add(_playerCharacterBindSystem);
-            _systems.Add(_velocityMovementSystem);
+            _systems.Add(_movementSystem);
         }
 
         private void PrepareEnvironmentSystems()
         {
-            _systems.Add(_buttonInitializeSystem);
-            _systems.Add(_buttonsBindSystem);
-            _systems.Add(_buttonsInteractorSystem);
+            PrepareButtonSystems();
+            PrepareDoorsSystem();
+        }
+
+        private void PrepareDoorsSystem()
+        {
             _systems.Add(_doorsInitializeSystem);
             _systems.Add(_doorsBindSystem);
+            _systems.Add(_buttonsInteractorSystem);
+        }
+
+        private void PrepareButtonSystems()
+        {
+            _systems.Add(_buttonInitializeSystem);
+            _systems.Add(_buttonsBindSystem);
+            _systems.Add(_doorMovementSystem);
         }
     }
 }

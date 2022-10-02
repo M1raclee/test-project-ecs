@@ -19,7 +19,7 @@ namespace Code.ECS.Server.Systems
 
             world.GetPool<PlayerTag>().Add(player);
             world.GetPool<MovementInput>().Add(player);
-            world.GetPool<MovementVelocity>().Add(player);
+            world.GetPool<MovementDirection>().Add(player);
             world.GetPool<ButtonsInteractor>().Add(player);
             ref var movementParams = ref world.GetPool<MovementParams>().Add(player);
 

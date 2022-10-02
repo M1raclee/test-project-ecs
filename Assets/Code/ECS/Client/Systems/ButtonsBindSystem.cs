@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Code.ECS.Client.Components;
-using Code.ECS.Server.Tags;
+using Code.ECS.Shared.Components;
 using Code.ECS.Shared.Tags;
 using Leopotam.EcsLite;
 
@@ -16,18 +16,23 @@ namespace Code.ECS.Client.Systems
         public void Run(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-            var buttonsFilter = world.Filter<ButtonTag>().End();
-            var buttons = world.GetPool<Button>();
+            var buttonsFilter = world.Filter<ButtonTag>().Inc<ButtonState>().End();
+            
+            var gameObjects = world.GetPool<GameObject>();
+            var buttonStates = world.GetPool<ButtonState>();
 
             foreach (var entity in buttonsFilter)
             {
-                if (buttons.Has(entity)) 
+                if (gameObjects.Has(entity)) 
                     continue;
                 
-                ref var button = ref buttons.Add(entity);
+                ref var button = ref gameObjects.Add(entity);
+                ref var state = ref buttonStates.Get(entity);
 
                 var objButton = _buttonObjects.Dequeue();
-                button.Target = objButton;
+                button.Object = objButton.gameObject;
+                state.TargetDoorGuid = objButton.TargetGuid;
+
                 objButton.Entity = entity;
             }
         }

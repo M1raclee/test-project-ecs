@@ -1,7 +1,8 @@
-using Code.ECS.Client.Components;
 using Code.ECS.Shared.Components;
 using Code.Utils;
 using Leopotam.EcsLite;
+using UnityEngine;
+using GameObject = Code.ECS.Client.Components.GameObject;
 
 namespace Code.ECS.Client.Systems
 {
@@ -10,17 +11,17 @@ namespace Code.ECS.Client.Systems
         public void Run(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-            var locationFilter = world.Filter<Location>().Inc<GameObjectMovement>().End();
-            
-            var location = world.GetPool<Location>();
-            var gameObject = world.GetPool<GameObjectMovement>();
+            var movementObjectsFilter = world.Filter<GameObject>().Inc<MovementDirection>().End();
 
-            foreach (var entity in locationFilter)
+            var directions = world.GetPool<MovementDirection>();
+            var gameObject = world.GetPool<GameObject>();
+
+            foreach (var entity in movementObjectsFilter)
             {
                 ref var movableObject = ref gameObject.Get(entity);
-                ref var newLocation = ref location.Get(entity);
+                ref var direction = ref directions.Get(entity);
 
-                movableObject.Target.position = newLocation.Position.ToUnityVector3();
+                movableObject.Transform.position += direction.Offset.ToUnityVector3() * Time.deltaTime;
             }
         }
     }

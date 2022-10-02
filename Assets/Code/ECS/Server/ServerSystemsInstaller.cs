@@ -1,4 +1,3 @@
-using Code.ECS.Server.Systems;
 using Code.ECS.Server.Systems.Initialization;
 using Code.ECS.Server.Systems.Movement;
 using Zenject;
@@ -15,6 +14,7 @@ namespace Code.ECS.Server
             Container.Bind<ButtonInitializeSystem>().AsSingle();
             Container.Bind<DoorsInitializeSystem>().AsSingle();
             Container.Bind<DoorMovementSystem>().AsSingle();
+            Container.Bind<LocationUpdatingSystem>().AsSingle();
         }
     }
 }

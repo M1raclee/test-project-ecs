@@ -4,5 +4,6 @@ namespace Code.ECS.Shared.Components
     {
         public float Speed;
         public float Gravity;
+        public float Equalizer;
     }
 }

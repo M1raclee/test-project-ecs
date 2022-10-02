@@ -25,6 +25,7 @@ namespace Code.ECS.Server.Systems.Initialization
 
             movementParams.Speed = _staticData.ForPlayer().MovementSpeed;
             movementParams.Gravity = _staticData.ForPlayer().Gravity;
+            movementParams.Equalizer = 1;
         }
     }
 }

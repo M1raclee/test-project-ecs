@@ -10,20 +10,20 @@ namespace Code.ECS.Server.Systems.Movement
             var world = systems.GetWorld();
             var movableFilter = world.Filter<MovementDirection>().Inc<MovementInput>().Inc<MovementParams>().End();
             
-            var movementVelocity = world.GetPool<MovementDirection>();
+            var movementDirection = world.GetPool<MovementDirection>();
             var movementInput = world.GetPool<MovementInput>();
             var movementParams = world.GetPool<MovementParams>();
 
             foreach (var entity in movableFilter)
             {
-                ref var direction = ref movementVelocity.Get(entity);
+                ref var direction = ref movementDirection.Get(entity);
                 ref var entityInput = ref movementInput.Get(entity);
                 ref var currentParams = ref movementParams.Get(entity);
 
-                var newDirection = entityInput.Axis * currentParams.Speed;
-                newDirection.Y = currentParams.Gravity;
+                var offset = entityInput.Axis * currentParams.Speed * currentParams.Equalizer;
+                offset.Y = currentParams.Gravity;
                 
-                direction.Offset = newDirection;
+                direction.Offset = offset;
             }
         }
     }

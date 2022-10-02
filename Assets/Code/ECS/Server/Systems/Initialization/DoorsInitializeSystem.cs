@@ -23,6 +23,7 @@ namespace Code.ECS.Server.Systems.Initialization
                 world.GetPool<DoorTag>().Add(button);
                 world.GetPool<Identifier>().Add(button);
                 world.GetPool<MovementInput>().Add(button);
+                world.GetPool<Location>().Add(button);
                 world.GetPool<MovementDirection>().Add(button);
                 ref var param = ref world.GetPool<MovementParams>().Add(button);
                 param.Speed = doorsData.MovingSpeed;

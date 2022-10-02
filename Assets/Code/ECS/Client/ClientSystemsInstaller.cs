@@ -9,10 +9,12 @@ namespace Code.ECS.Client
     {
         public override void InstallBindings()
         {
-            Container.Bind<PlayerInputSystem>().AsSingle();
             Container.Bind<GameObjectMovementSystem>().AsSingle();
+            
+            Container.Bind<PlayerInputSystem>().AsSingle();
             Container.Bind<CharacterMovementSystem>().AsSingle();
             Container.Bind<PlayerCharacterBindSystem>().AsSingle();
+            Container.Bind<CharacterAnimationSystem>().AsSingle();
             
             Container.Bind<ButtonsBindSystem>().AsSingle();
             Container.Bind<ButtonsInteractorSystem>().AsSingle();

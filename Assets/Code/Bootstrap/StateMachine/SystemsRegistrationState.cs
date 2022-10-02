@@ -18,6 +18,7 @@ namespace Code.Bootstrap.StateMachine
         private readonly GameObjectMovementSystem _gameObjectMovementSystem;
         private readonly MovementSystem _movementSystem;
         private readonly CharacterMovementSystem _characterMovementSystem;
+        private readonly CharacterAnimationSystem _characterAnimationSystem;
         private readonly PlayerCharacterBindSystem _playerCharacterBindSystem;
         private readonly ButtonInitializeSystem _buttonInitializeSystem;
         private readonly ButtonsBindSystem _buttonsBindSystem;
@@ -33,6 +34,7 @@ namespace Code.Bootstrap.StateMachine
             ISceneContentService sceneContentService, PlayerInitializeSystem playerInitializeSystem,
             PlayerInputSystem playerInputSystem, GameObjectMovementSystem gameObjectMovementSystem,
             MovementSystem movementSystem, CharacterMovementSystem characterMovementSystem,
+            CharacterAnimationSystem characterAnimationSystem,
             PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
             ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem,
             DoorsInitializeSystem doorsInitializeSystem, DoorsBindSystem doorsBindSystem,
@@ -46,6 +48,7 @@ namespace Code.Bootstrap.StateMachine
             _gameObjectMovementSystem = gameObjectMovementSystem;
             _movementSystem = movementSystem;
             _characterMovementSystem = characterMovementSystem;
+            _characterAnimationSystem = characterAnimationSystem;
             _playerCharacterBindSystem = playerCharacterBindSystem;
             _buttonInitializeSystem = buttonInitializeSystem;
             _buttonsBindSystem = buttonsBindSystem;
@@ -88,6 +91,7 @@ namespace Code.Bootstrap.StateMachine
             _systems.Add(_characterMovementSystem);
             _systems.Add(_playerCharacterBindSystem);
             _systems.Add(_movementSystem);
+            _systems.Add(_characterAnimationSystem);
         }
 
         private void PrepareEnvironmentSystems()

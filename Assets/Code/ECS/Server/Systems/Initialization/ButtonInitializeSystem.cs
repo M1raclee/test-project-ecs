@@ -15,11 +15,12 @@ namespace Code.ECS.Server.Systems.Initialization
         public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-
             var buttonsData = _staticData.ForButtons();
+            
             for (var i = 0; i < buttonsData.TotalCount; i++)
             {
                 var button = world.NewEntity();
+                
                 world.GetPool<ButtonTag>().Add(button);
                 world.GetPool<ButtonState>().Add(button);
                 world.GetPool<Location>().Add(button);
@@ -27,6 +28,7 @@ namespace Code.ECS.Server.Systems.Initialization
                 world.GetPool<MovementResult>().Add(button);
                 world.GetPool<PositionRestrictions>().Add(button);
                 ref var param = ref world.GetPool<MovementParams>().Add(button);
+                
                 param.Speed = buttonsData.MovingSpeed;
                 param.Equalizer = 0.001f;
             }

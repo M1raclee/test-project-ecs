@@ -41,8 +41,11 @@ namespace Code.ECS.Client.Systems.Binding
 
                 button.Object = objButton.gameObject;
                 button.Transform = objButton.transform;
+                
                 state.TargetDoorGuid = objButton.TargetGuid;
+                
                 location.Position = buttonPos.ToSystemVector3();
+                
                 restrictions.MaxPosition = buttonPos.ToSystemVector3();
                 restrictions.MinPosition = (buttonPos - new Vector3(0, objButton.PressingOffset, 0)).ToSystemVector3();
 

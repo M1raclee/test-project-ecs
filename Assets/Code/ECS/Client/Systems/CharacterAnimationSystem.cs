@@ -24,7 +24,7 @@ namespace Code.ECS.Client.Systems
 
                 var isMoving = Math.Abs(input.Axis.X) > 0 || Math.Abs(input.Axis.Z) > 0;
                 
-                animation.Animator.SetBool(animation.IsMovingParam, isMoving);
+                animation.Animator.SetBool(animation.IsMovingParamName, isMoving);
             }
         }
     }

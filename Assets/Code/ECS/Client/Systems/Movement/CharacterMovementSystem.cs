@@ -21,20 +21,20 @@ namespace Code.ECS.Client.Systems.Movement
                 ref var character = ref characterMovement.Get(entity);
                 ref var result = ref movementResults.Get(entity);
 
-                Move(character, result);
-                Rotate(character, result);
+                Move(character, to: result.Offset.ToUnityVector3());
+                Rotate(character, to: result.Direction.ToUnityVector3());
             }
         }
 
-        private static void Move(CharacterMovement character, MovementResult result) => 
-            character.Target.Move(result.Offset.ToUnityVector3());
+        private static void Move(CharacterMovement character, Vector3 to) => 
+            character.Target.Move(to);
 
-        private static void Rotate(CharacterMovement character, MovementResult result)
+        private static void Rotate(CharacterMovement character, Vector3 to)
         {
-            var directionVector = result.Direction.ToUnityVector3();
-            directionVector.y = 0;
-            if (directionVector != Vector3.zero)
-                character.Body.forward = directionVector;
+            to.y = 0;
+            
+            if (to != Vector3.zero)
+                character.Body.forward = to;
         }
     }
 }

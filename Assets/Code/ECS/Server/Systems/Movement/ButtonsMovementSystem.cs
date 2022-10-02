@@ -28,12 +28,21 @@ namespace Code.ECS.Server.Systems.Movement
                 ref var param = ref movementParams.Get(entity);
                 ref var restrictions = ref posRestrictions.Get(entity);
 
-                if (button.IsPressing && location.Position.Y > restrictions.MinPosition.Y)
-                    input.Axis = new Vector3(0, -param.Speed, 0);
-                else if(!button.IsPressing && location.Position.Y < restrictions.MaxPosition.Y) 
-                    input.Axis = new Vector3(0, param.Speed, 0);
-                else input.Axis = new Vector3(0, 0, 0);
+                float verticalMovement = 0;
+                
+                if (button.IsPressing && !IsButtonObjectPressed(location, restrictions))
+                    verticalMovement = -param.Speed;
+                else if (!button.IsPressing && !IsButtonObjectReleased(location, restrictions))
+                    verticalMovement = param.Speed;
+
+                input.Axis = new Vector3(0, verticalMovement, 0);
             }
         }
+
+        private static bool IsButtonObjectReleased(Location location, PositionRestrictions restrictions) =>
+            location.Position.Y > restrictions.MaxPosition.Y;
+
+        private static bool IsButtonObjectPressed(Location location, PositionRestrictions restrictions) =>
+            location.Position.Y < restrictions.MinPosition.Y;
     }
 }

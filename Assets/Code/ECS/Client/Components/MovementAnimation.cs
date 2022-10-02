@@ -5,6 +5,6 @@ namespace Code.ECS.Client.Components
     public struct MovementAnimation
     {
         public Animator Animator;
-        public string IsMovingParam;
+        public string IsMovingParamName;
     }
 }

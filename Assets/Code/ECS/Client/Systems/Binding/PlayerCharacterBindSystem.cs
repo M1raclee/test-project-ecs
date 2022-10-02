@@ -11,7 +11,6 @@ namespace Code.ECS.Client.Systems.Binding
         public void SetupPlayerObject(PlayerObject playerObject) =>
             _playerObject = playerObject;
 
-
         public void Run(IEcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -31,9 +30,11 @@ namespace Code.ECS.Client.Systems.Binding
 
                 character.Target = _playerObject.Character;
                 character.Body = _playerObject.transform;
-                colDetector.Detector = _playerObject.CollisionDetector;
+                
                 animation.Animator = _playerObject.Animator;
-                animation.IsMovingParam = "IsWalking";
+                animation.IsMovingParamName = "IsWalking";
+                
+                colDetector.Detector = _playerObject.CollisionDetector;
             }
         }
     }

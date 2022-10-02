@@ -35,9 +35,13 @@ namespace Code.ECS.Client.Systems.Binding
                 ref var location = ref locations.Get(entity);
 
                 var objDoor = _doorsObjects.Dequeue();
+                
                 identifier.Guid = objDoor.Guid;
+                
                 door.Transform = objDoor.transform;
+                
                 location.Position = objDoor.transform.position.ToSystemVector3();
+                
                 restrictions.MaxPosition = objDoor.OpenedPosition.ToSystemVector3();
                 restrictions.MinPosition = objDoor.ClosedPosition.ToSystemVector3();
             }

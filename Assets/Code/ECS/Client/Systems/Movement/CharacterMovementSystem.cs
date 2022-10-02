@@ -3,7 +3,7 @@ using Code.ECS.Shared.Components;
 using Code.Utils;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Client.Systems
+namespace Code.ECS.Client.Systems.Movement
 {
     public class CharacterMovementSystem : IEcsRunSystem
     {

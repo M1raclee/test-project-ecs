@@ -1,5 +1,5 @@
-using Code.ECS.Server.Tags;
 using Code.ECS.Shared.Components;
+using Code.ECS.Shared.Tags;
 using Code.Services.InputService;
 using Code.Utils;
 using Leopotam.EcsLite;

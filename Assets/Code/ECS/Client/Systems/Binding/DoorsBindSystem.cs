@@ -4,7 +4,7 @@ using Code.ECS.Shared.Components;
 using Code.ECS.Shared.Tags;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Client.Systems
+namespace Code.ECS.Client.Systems.Binding
 {
     public class DoorsBindSystem : IEcsRunSystem
     {

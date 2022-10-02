@@ -3,7 +3,7 @@ using Code.ECS.Shared.Components;
 using Code.ECS.Shared.Tags;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Server.Systems
+namespace Code.ECS.Server.Systems.Movement
 {
     public class DoorMovementSystem : IEcsRunSystem
     {

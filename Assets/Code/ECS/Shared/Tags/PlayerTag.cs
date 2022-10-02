@@ -1,4 +1,4 @@
-namespace Code.ECS.Server.Tags
+namespace Code.ECS.Shared.Tags
 {
     public struct PlayerTag { }
 }

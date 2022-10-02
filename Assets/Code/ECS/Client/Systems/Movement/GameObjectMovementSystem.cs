@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 using UnityEngine;
 using GameObject = Code.ECS.Client.Components.GameObject;
 
-namespace Code.ECS.Client.Systems
+namespace Code.ECS.Client.Systems.Movement
 {
     public class GameObjectMovementSystem : IEcsRunSystem
     {

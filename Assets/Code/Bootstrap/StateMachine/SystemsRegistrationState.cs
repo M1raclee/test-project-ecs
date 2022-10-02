@@ -1,5 +1,9 @@
 using Code.ECS.Client.Systems;
+using Code.ECS.Client.Systems.Binding;
+using Code.ECS.Client.Systems.Movement;
 using Code.ECS.Server.Systems;
+using Code.ECS.Server.Systems.Initialization;
+using Code.ECS.Server.Systems.Movement;
 using Code.Services.SceneContent;
 using Leopotam.EcsLite;
 using Zenject;

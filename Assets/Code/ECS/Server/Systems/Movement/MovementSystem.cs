@@ -1,7 +1,7 @@
 using Code.ECS.Shared.Components;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Server.Systems
+namespace Code.ECS.Server.Systems.Movement
 {
     public class MovementSystem : IEcsRunSystem
     {

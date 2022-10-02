@@ -1,4 +1,6 @@
 using Code.ECS.Client.Systems;
+using Code.ECS.Client.Systems.Binding;
+using Code.ECS.Client.Systems.Movement;
 using Zenject;
 
 namespace Code.ECS.Client

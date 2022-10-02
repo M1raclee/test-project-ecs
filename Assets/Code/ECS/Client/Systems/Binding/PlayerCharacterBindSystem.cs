@@ -1,8 +1,8 @@
 using Code.ECS.Client.Components;
-using Code.ECS.Server.Tags;
+using Code.ECS.Shared.Tags;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Client.Systems
+namespace Code.ECS.Client.Systems.Binding
 {
     public class PlayerCharacterBindSystem : IEcsRunSystem
     {

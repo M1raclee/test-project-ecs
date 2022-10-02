@@ -1,9 +1,9 @@
-using Code.ECS.Server.Tags;
 using Code.ECS.Shared.Components;
+using Code.ECS.Shared.Tags;
 using Code.Services.StaticData;
 using Leopotam.EcsLite;
 
-namespace Code.ECS.Server.Systems
+namespace Code.ECS.Server.Systems.Initialization
 {
     public class PlayerInitializeSystem : IEcsInitSystem
     {

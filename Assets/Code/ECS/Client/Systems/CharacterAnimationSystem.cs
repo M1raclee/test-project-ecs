@@ -1,4 +1,4 @@
-using System.Numerics;
+using System;
 using Code.ECS.Client.Components;
 using Code.ECS.Shared.Components;
 using Code.ECS.Shared.Tags;
@@ -22,7 +22,7 @@ namespace Code.ECS.Client.Systems
                 ref var animation = ref movementAnimation.Get(entity);
                 ref var input = ref inputs.Get(entity);
 
-                var isMoving = input.Axis != Vector3.Zero;
+                var isMoving = Math.Abs(input.Axis.X) > 0 || Math.Abs(input.Axis.Z) > 0;
                 
                 animation.Animator.SetBool(animation.IsMovingParam, isMoving);
             }

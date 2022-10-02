@@ -22,7 +22,7 @@ namespace Code.ECS.Client.Systems.Binding
             var gameObjects = world.GetPool<GameObject>();
             var locations = world.GetPool<Location>();
             var doorIdentifiers = world.GetPool<Identifier>();
-            var doorRestrictions = world.GetPool<DoorRestrictions>();
+            var doorRestrictions = world.GetPool<PositionRestrictions>();
 
             foreach (var entity in doorsFilter)
             {
@@ -38,8 +38,8 @@ namespace Code.ECS.Client.Systems.Binding
                 identifier.Guid = objDoor.Guid;
                 door.Transform = objDoor.transform;
                 location.Position = objDoor.transform.position.ToSystemVector3();
-                restrictions.OpenedPosition = objDoor.OpenedPosition.ToSystemVector3();
-                restrictions.ClosedPosition = objDoor.ClosedPosition.ToSystemVector3();
+                restrictions.MaxPosition = objDoor.OpenedPosition.ToSystemVector3();
+                restrictions.MinPosition = objDoor.ClosedPosition.ToSystemVector3();
             }
         }
     }

@@ -24,7 +24,7 @@ namespace Code.ECS.Server.Systems.Initialization
                 world.GetPool<Identifier>().Add(button);
                 world.GetPool<MovementInput>().Add(button);
                 world.GetPool<Location>().Add(button);
-                world.GetPool<MovementDirection>().Add(button);
+                world.GetPool<MovementResult>().Add(button);
                 ref var param = ref world.GetPool<MovementParams>().Add(button);
                 param.Speed = doorsData.MovingSpeed;
                 param.Equalizer = 0.001f;

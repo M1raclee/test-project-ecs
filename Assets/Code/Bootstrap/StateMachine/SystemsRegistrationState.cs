@@ -1,7 +1,6 @@
 using Code.ECS.Client.Systems;
 using Code.ECS.Client.Systems.Binding;
 using Code.ECS.Client.Systems.Movement;
-using Code.ECS.Server.Systems;
 using Code.ECS.Server.Systems.Initialization;
 using Code.ECS.Server.Systems.Movement;
 using Code.Services.SceneContent;
@@ -23,6 +22,7 @@ namespace Code.Bootstrap.StateMachine
         private readonly ButtonInitializeSystem _buttonInitializeSystem;
         private readonly ButtonsBindSystem _buttonsBindSystem;
         private readonly ButtonsInteractorSystem _buttonsInteractorSystem;
+        private readonly ButtonsMovementSystem _buttonsMovementSystem;
         private readonly DoorsInitializeSystem _doorsInitializeSystem;
         private readonly DoorsBindSystem _doorsBindSystem;
         private readonly DoorMovementSystem _doorMovementSystem;
@@ -37,6 +37,7 @@ namespace Code.Bootstrap.StateMachine
             CharacterAnimationSystem characterAnimationSystem,
             PlayerCharacterBindSystem playerCharacterBindSystem, ButtonInitializeSystem buttonInitializeSystem,
             ButtonsBindSystem buttonsBindSystem, ButtonsInteractorSystem buttonsInteractorSystem,
+            ButtonsMovementSystem buttonsMovementSystem,
             DoorsInitializeSystem doorsInitializeSystem, DoorsBindSystem doorsBindSystem,
             DoorMovementSystem doorMovementSystem, LocationUpdatingSystem locationUpdatingSystem)
         {
@@ -53,6 +54,7 @@ namespace Code.Bootstrap.StateMachine
             _buttonInitializeSystem = buttonInitializeSystem;
             _buttonsBindSystem = buttonsBindSystem;
             _buttonsInteractorSystem = buttonsInteractorSystem;
+            _buttonsMovementSystem = buttonsMovementSystem;
             _doorsInitializeSystem = doorsInitializeSystem;
             _doorsBindSystem = doorsBindSystem;
             _doorMovementSystem = doorMovementSystem;
@@ -111,6 +113,7 @@ namespace Code.Bootstrap.StateMachine
         {
             _systems.Add(_buttonInitializeSystem);
             _systems.Add(_buttonsBindSystem);
+            _systems.Add(_buttonsMovementSystem);
             _systems.Add(_doorMovementSystem);
         }
     }

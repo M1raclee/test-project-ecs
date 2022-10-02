@@ -15,12 +15,12 @@ namespace Code.ECS.Server.Systems.Movement
             var buttonStates = world.GetPool<ButtonState>();
 
             var doorsFilter = world.Filter<DoorTag>()
-                .Inc<MovementInput>().Inc<DoorRestrictions>().Inc<Identifier>().Inc<Location>()
+                .Inc<MovementInput>().Inc<PositionRestrictions>().Inc<Identifier>().Inc<Location>()
                 .End();
 
             var doorsMovement = world.GetPool<MovementInput>();
             var doorsIdentifiers = world.GetPool<Identifier>();
-            var doorRestrictions = world.GetPool<DoorRestrictions>();
+            var doorRestrictions = world.GetPool<PositionRestrictions>();
             var locations = world.GetPool<Location>();
 
             foreach (var entity in doorsFilter)
@@ -44,15 +44,15 @@ namespace Code.ECS.Server.Systems.Movement
 
                     if (identifier.Guid == button.TargetDoorGuid)
                         if (!IsOpened(location, restrictions))
-                            movement.Axis = GetMovementDirection(restrictions);
+                            movement.Axis = GetMovementResult(restrictions);
                 }
             }
         }
 
-        private static Vector3 GetMovementDirection(DoorRestrictions restrictions) =>
-            restrictions.OpenedPosition - restrictions.ClosedPosition;
+        private static Vector3 GetMovementResult(PositionRestrictions restrictions) =>
+            restrictions.MaxPosition - restrictions.MinPosition;
 
-        private static bool IsOpened(Location location, DoorRestrictions restrictions) =>
-            Vector3.Distance(location.Position, restrictions.OpenedPosition) < 0.1f;
+        private static bool IsOpened(Location location, PositionRestrictions restrictions) =>
+            Vector3.Distance(location.Position, restrictions.MaxPosition) < 0.1f;
     }
 }

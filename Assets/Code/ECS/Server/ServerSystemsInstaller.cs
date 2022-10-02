@@ -12,6 +12,7 @@ namespace Code.ECS.Server
             Container.Bind<MovementSystem>().AsSingle();
             
             Container.Bind<ButtonInitializeSystem>().AsSingle();
+            Container.Bind<ButtonsMovementSystem>().AsSingle();
             Container.Bind<DoorsInitializeSystem>().AsSingle();
             Container.Bind<DoorMovementSystem>().AsSingle();
             Container.Bind<LocationUpdatingSystem>().AsSingle();

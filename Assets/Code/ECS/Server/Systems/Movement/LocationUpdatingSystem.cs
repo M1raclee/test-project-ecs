@@ -8,17 +8,17 @@ namespace Code.ECS.Server.Systems.Movement
         public void Run(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-            var movementObjectsFilter = world.Filter<Location>().Inc<MovementDirection>().End();
+            var movementObjectsFilter = world.Filter<Location>().Inc<MovementResult>().End();
             
-            var movementDirections = world.GetPool<MovementDirection>();
+            var movementResults = world.GetPool<MovementResult>();
             var locations = world.GetPool<Location>();
 
             foreach (var entity in movementObjectsFilter)
             {
-                ref var direction = ref movementDirections.Get(entity);
+                ref var result = ref movementResults.Get(entity);
                 ref var location = ref locations.Get(entity);
 
-                location.Position += direction.Offset;
+                location.Position += result.Offset;
             }
         }
     }

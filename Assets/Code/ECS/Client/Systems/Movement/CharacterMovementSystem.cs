@@ -11,27 +11,27 @@ namespace Code.ECS.Client.Systems.Movement
         public void Run(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-            var locationFilter = world.Filter<CharacterMovement>().Inc<MovementDirection>().End();
+            var locationFilter = world.Filter<CharacterMovement>().Inc<MovementResult>().End();
 
             var characterMovement = world.GetPool<CharacterMovement>();
-            var movementDirections = world.GetPool<MovementDirection>();
+            var movementResults = world.GetPool<MovementResult>();
 
             foreach (var entity in locationFilter)
             {
                 ref var character = ref characterMovement.Get(entity);
-                ref var direction = ref movementDirections.Get(entity);
+                ref var result = ref movementResults.Get(entity);
 
-                Move(character, direction);
-                Rotate(character, direction);
+                Move(character, result);
+                Rotate(character, result);
             }
         }
 
-        private static void Move(CharacterMovement character, MovementDirection direction) => 
-            character.Target.Move(direction.Offset.ToUnityVector3());
+        private static void Move(CharacterMovement character, MovementResult result) => 
+            character.Target.Move(result.Offset.ToUnityVector3());
 
-        private static void Rotate(CharacterMovement character, MovementDirection direction)
+        private static void Rotate(CharacterMovement character, MovementResult result)
         {
-            var directionVector = direction.Direction.ToUnityVector3();
+            var directionVector = result.Direction.ToUnityVector3();
             directionVector.y = 0;
             if (directionVector != Vector3.zero)
                 character.Body.forward = directionVector;
